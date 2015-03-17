@@ -14,7 +14,7 @@ Vagrant.configure('2') do |config|
   config.vm.network :forwarded_port, guest: 6379, host: 6379
 
   # rsync
-  config.vm.synced_folder '.', '/vagrant', type: 'rsync'
+  config.vm.synced_folder '.', '/vagrant', type: 'rsync', rsync__exclude: [".git/"]
 
   # bootstrap
   config.vm.provision :shell, path: 'bootstrap.sh', keep_color: true
