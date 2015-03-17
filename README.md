@@ -119,7 +119,7 @@ VMの状態を確認するには、次のコマンドを実行します。
 
 詳しい情報は [Vagrant documentation](http://docs.vagrantup.com/v2/) で確認してください。
 
-## rsync
+## ファイル同期「rsync」
 
 Vagrant 1.5からは、[sharing mechanism based on rsync](https://www.vagrantup.com/blog/feature-preview-vagrant-1-5-rsync.html)
 が利用可能で、ファイルの読み書きが劇的に改善されています。  
@@ -151,6 +151,19 @@ Git for Windowsに'rsync for win'ディレクトリ内ののdllとexeを配置�
     vagrant@rails-dev-box:~$ vim Gemfile  # therubyracer をコメント解除
     vagrant@rails-dev-box:~$ bundle
     vagrant@rails-dev-box:~$ rails s -b 0.0.0.0
+
+### VM→ホストPCのファイル同期
+
+現時点では、`vagrant rsync-auto`によるファイル同期はホストPC→VMの一方向のみです。  
+
+    vagrant plugin install vagrant-rsync-back
+
+して、
+
+    vagrant rsync-back
+
+でVM→ホストPCの同期ができます。  
+双方向同期が実装されるまでは、この手法で。
 
 ## オリジナルとの変更点
 
